@@ -33,6 +33,8 @@ class MyWsServer(WebSocket):
                 # 或：向所有客户端，广播接收到的消息载荷
                 if (action == 'broadcast_channel' and client.channel == self.channel) or action == 'broadcast_all':
                     MyWsServer.send(client, action, category, payload)
+                if action == 'send_client_message' and client.client_id == category:
+                    MyWsServer.send(client, action, category, payload)
         except JSONDecodeError as decode_err:
             print(decode_err)
         except AttributeError as attr_err:
