@@ -76,5 +76,5 @@ class MyWsServer(WebSocket):
                 MyWsServer.send(client, 'close', 'general', payload)
 
 
-server = SimpleWebSocketServer('', 6789, MyWsServer)
+server = SimpleWebSocketServer('0.0.0.0', 6789, MyWsServer)
 server.serveforever()
